@@ -1,14 +1,26 @@
-<nav>
-  <a [routerLink]="['/']">page1</a>
-</nav>
-<div>
-  <nav>
-    <a [routerLink]="['/page2']">page2</a>
+<header>
+  <nav class="side-menu">
+    <ul [@moveCardsRight]="menuVisible ? 'open' : 'closed'">
+      <li>
+        <a [@moveCardsRight] (click)="onNavClick(0)" class="menu-item">{{
+          navLinks[0].label
+        }}</a>
+      </li>
+      <li>
+        <a [@moveCardsRight] (click)="onNavClick(1)" class="menu-item">{{
+          navLinks[1].label
+        }}</a>
+      </li>
+      <li>
+        <a [@moveCardsRight] (click)="onNavClick(2)" class="menu-item">{{
+          navLinks[2].label
+        }}</a>
+      </li>
+    </ul>
   </nav>
-  <nav>
-    <a [routerLink]="['/page3']">page3</a>
-  </nav>
-</div>
+</header>
+
+<div class="actual-page">acceuil</div>
 
 <main [@routeAnimation]="prepareRoute(outlet)" class="content">
   <router-outlet #outlet="outlet"></router-outlet>

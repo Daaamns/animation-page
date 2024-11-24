@@ -1,1 +1,72 @@
+// Variables pour faciliter les changements
+$menu-bg-color: red;
+$menu-hover-color: darkred;
+$menu-text-color: white;
+$menu-font-size: 1.2rem;
+$active-button-bg-color: darkblue; // Couleur de fond pour le bouton actif
+$menu-animation-duration: 0.5s; // Durée de l'animation
 
+// Menu latéral
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-decoration: none;
+    color: $menu-text-color;
+    background-color: $menu-bg-color;
+    height: 100%;
+    width: 25px;
+    padding-left: 5px;
+    flex: 1;
+    font-size: $menu-font-size;
+    font-weight: bold;
+    transition: background-color $menu-animation-duration ease;
+
+    &:hover {
+      background-color: $menu-hover-color;
+    }
+  }
+}
+
+.actual-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px; // Largeur personnalisable
+  height: 100vh; // Prend toute la hauteur de l'écran
+  background-color: fuchsia; // Couleur de fond personnalisable
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl; // Texte en vertical
+  text-orientation: mixed;
+  color: white; // Couleur du texte
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 2; // Assure que cet élément est au-dessus du contenu
+}
+
+.content {
+  margin: 0 50px;
+}

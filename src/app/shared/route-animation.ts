@@ -2,6 +2,8 @@ import {
   animate,
   group,
   query,
+  stagger,
+  state,
   style,
   transition,
   trigger,
@@ -14,14 +16,27 @@ export const slider = trigger('routeAnimation', [
   transition('isLeft => *', slideTo('right')),
 ]);
 
-export const navAnimation = trigger('navAnimation', [
-  transition('inactive => active', [
-    style({ transform: 'translateX(-100%)' }),
-    animate('500ms ease-out', style({ transform: 'translateX(0)' })),
-  ]),
-  transition('active => inactive', [
-    style({ transform: 'translateX(0)' }),
-    animate('500ms ease-out', style({ transform: 'translateX(100%)' })),
+export const moveCardsRight = trigger('moveCardsRight', [
+  state(
+    'open',
+    style({
+      transform: 'translateX(0)', // Position initiale
+    })
+  ),
+  state(
+    'closed',
+    style({
+      transform: 'translateX(100vw)', // Position finale
+    })
+  ),
+  transition('open => closed', [
+    query(
+      '.menu-item',
+      stagger(100, [
+        animate('20s ease-out', style({ transform: 'translateX(100vw)' })),
+      ]),
+      { optional: true }
+    ),
   ]),
 ]);
 
